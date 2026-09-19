@@ -1,0 +1,335 @@
+@ -0,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elsewhere Privacy Policy</title>
+<meta name="description" content="Privacy policy for the Elsewhere iOS app.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f2;
+    --bg-raised: #f2efe4;
+    --ink: #171f1b;
+    --ink-soft: #4b564e;
+    --muted: #7a8479;
+    --accent: #83713a;
+    --accent-soft: #ede4cd;
+    --line: #e2ddca;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --max: 40rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1512;
+      --bg-raised: #121b17;
+      --ink: #f1ecdd;
+      --ink-soft: #c2c9bf;
+      --muted: #8a9690;
+      --accent: #d9c98a;
+      --accent-soft: #1c261f;
+      --line: #26332c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1512;
+    --bg-raised: #121b17;
+    --ink: #f1ecdd;
+    --ink-soft: #c2c9bf;
+    --muted: #8a9690;
+    --accent: #d9c98a;
+    --accent-soft: #1c261f;
+    --line: #26332c;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    padding-inline: 20px;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; }
+
+  header.top {
+    padding-block: 3rem 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+    margin-bottom: 2.2rem;
+  }
+  .brand svg { width: 22px; height: 14px; flex: none; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.9rem;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2rem, 6vw, 2.7rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 1rem;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+  .meta strong { color: var(--ink-soft); font-weight: 600; }
+
+  nav.toc {
+    margin-block: 2rem 2.5rem;
+    padding: 1.1rem 1.3rem;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  nav.toc p.eyebrow { margin-bottom: 0.7rem; }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 1.1rem;
+    columns: 2;
+    column-gap: 1.5rem;
+    font-size: 0.9rem;
+  }
+  nav.toc li { break-inside: avoid; margin-bottom: 0.45rem; }
+  nav.toc a { color: var(--ink-soft); }
+  nav.toc a:hover { color: var(--accent); }
+
+  main { padding-block: 0.5rem 3rem; }
+
+  section { padding-block: 1.9rem; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  section h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: 0 0 0.9rem;
+    scroll-margin-top: 1.2rem;
+  }
+  section h3 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: var(--ink);
+    margin: 1.3rem 0 0.35rem;
+  }
+  p { margin: 0 0 0.9rem; color: var(--ink-soft); }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0 0 0.9rem; padding-left: 1.2rem; color: var(--ink-soft); }
+  li { margin-bottom: 0.4rem; }
+  li:last-child { margin-bottom: 0; }
+
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    margin: 0.9rem 0;
+  }
+  .card p { margin: 0; font-size: 0.93rem; }
+  .card + .card { margin-top: 0.7rem; }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+
+  footer {
+    padding-block: 2rem 3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer .note {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    margin-bottom: 1.3rem;
+  }
+  footer a { color: var(--ink-soft); }
+
+  @media (max-width: 480px) {
+    nav.toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="14" cy="12" r="8" fill="currentColor" opacity="0.9"/>
+        <path d="M0 22c6-4 12-4 18 0s16 4 26 0" stroke="currentColor" stroke-width="1" opacity="0.5" fill="none"/>
+      </svg>
+      Elsewhere
+    </div>
+    <p class="eyebrow">Privacy policy</p>
+    <h1>How Elsewhere handles your information</h1>
+    <div class="meta">
+      <span>Effective <strong>September 16, 2026</strong></span>
+      <span>Developer <strong>Zhichao Li</strong></span>
+      <span>Contact <strong><a href="mailto:tedleezc@gmail.com">tedleezc@gmail.com</a></strong></span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <p class="eyebrow">On this page</p>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#collect">Information we collect</a></li>
+      <li><a href="#use">How we use it</a></li>
+      <li><a href="#share">How it's shared</a></li>
+      <li><a href="#retention">Retention</a></li>
+      <li><a href="#rights">Your choices</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#international">International users</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>Elsewhere is an iOS app that helps you wind down before bed by quieting chosen apps and giving you a nightly ritual. This policy explains what information Elsewhere collects, why, and the choices you have. It applies to the Elsewhere app published by Zhichao Li ("we," "us").</p>
+      <p>Elsewhere is built to need as little about you as possible. We don't run ads, we don't sell your information, and we don't use third-party analytics or advertising SDKs.</p>
+    </section>
+
+    <section id="collect">
+      <h2>Information we collect</h2>
+
+      <h3>Account information</h3>
+      <p>Elsewhere uses <strong>Sign in with Apple</strong> to create your account. Depending on the choice you make at sign-in, we receive your name and either your real email address or the private relay address Apple generates for you, along with a unique account identifier.</p>
+
+      <h3>Screen Time &amp; app shielding</h3>
+      <div class="card">
+        <span class="tag">Apple Screen Time / Family Controls</span>
+        <p>When you choose apps, categories, or websites to quiet during your wind-down or a moment away, Elsewhere uses Apple's on-device Screen Time (Family Controls) framework. By design, Apple does not disclose to us which specific apps, categories, or websites you select — we only receive an encrypted, opaque token that lets your device apply the shield. We cannot see, and do not store, the identity of what you've chosen to quiet.</p>
+      </div>
+
+      <h3>Ritual &amp; usage data</h3>
+      <p>To show your weekly minutes, streaks, and ritual history, and to keep your evening schedule in sync across your devices, we store the following tied to your account: your wind-down and bedtime settings, which evenings are active, the start and end times of each ritual or moment away, and aggregate minutes and day counts derived from those sessions.</p>
+
+      <h3>Subscription information</h3>
+      <p>Membership is a paid subscription processed entirely through Apple's In-App Purchase system. Apple handles your payment details directly — Elsewhere never receives your card number or full billing information. We receive only your subscription status (active, expired, or cancelled) so the app can unlock membership features.</p>
+
+      <h3>Notifications</h3>
+      <p>If you turn on wind-down reminders, we register a device push token with Apple's Push Notification service so we can deliver that reminder at the right time. Turning notifications off in Settings stops this.</p>
+
+      <h3>Diagnostic data</h3>
+      <p>Apple may share aggregated, anonymized crash and performance data with us through App Store Connect. This is Apple's standard developer diagnostics and isn't tied to your name or account.</p>
+    </section>
+
+    <section id="use">
+      <h2>How we use it</h2>
+      <ul>
+        <li>Operate your nightly ritual, wind-down schedule, and app-shielding settings</li>
+        <li>Sync your settings and ritual history across your devices</li>
+        <li>Deliver the reminders you've asked for</li>
+        <li>Recognize your Membership status through the App Store</li>
+        <li>Diagnose crashes and improve the app's reliability</li>
+        <li>Respond to you when you write to us</li>
+      </ul>
+    </section>
+
+    <section id="share">
+      <h2>How it's shared</h2>
+      <p>We do not sell your personal information, and we do not share it with advertisers. Elsewhere shares information only where the app's own functionality requires it:</p>
+      <ul>
+        <li><strong>Apple</strong> — for Sign in with Apple, the Screen Time / Family Controls framework, In-App Purchase billing, and push notifications. Apple's use of this information is governed by Apple's own privacy policy.</li>
+        <li><strong>Our servers</strong> — your account and ritual data are stored on servers we operate or contract with solely to run Elsewhere, and are not used for any other purpose.</li>
+        <li><strong>Legal reasons</strong> — if required to comply with a law, regulation, or valid legal process.</li>
+      </ul>
+      <p>Elsewhere does not embed third-party analytics, advertising, or tracking SDKs.</p>
+    </section>
+
+    <section id="retention">
+      <h2>Retention</h2>
+      <p>We keep your account and ritual data for as long as your account is active. If you delete your account, we delete this data from our systems within 30 days, except where a short retention is needed to comply with a legal or financial obligation (for example, records tied to an App Store transaction).</p>
+    </section>
+
+    <section id="rights">
+      <h2>Your choices</h2>
+      <ul>
+        <li><strong>Access or export.</strong> Email us to request a copy of the data tied to your account.</li>
+        <li><strong>Delete your account.</strong> Go to Settings → Manage account → Account Center and tap Delete Account to permanently remove your account and associated data.</li>
+        <li><strong>Correct your information.</strong> Email us to correct information tied to your account.</li>
+        <li><strong>Notifications.</strong> Turn wind-down reminders off anytime in iOS Settings or in the app.</li>
+        <li><strong>Screen Time permission.</strong> Revoke Elsewhere's Screen Time access anytime in iOS Settings → Screen Time.</li>
+        <li><strong>Subscription.</strong> Manage or cancel Membership through your Apple ID subscription settings.</li>
+      </ul>
+    </section>
+
+    <section id="children">
+      <h2>Children's privacy</h2>
+      <p>Elsewhere is not directed to children under 13, and we do not knowingly collect personal information from anyone under 13. If you believe a child has provided us with personal information, contact us and we will delete it.</p>
+    </section>
+
+    <section id="security">
+      <h2>Security</h2>
+      <p>We use industry-standard safeguards, including encryption in transit, to protect your information. No method of transmission or storage is perfectly secure, and we can't guarantee absolute security.</p>
+    </section>
+
+    <section id="international">
+      <h2>International users</h2>
+      <p>Elsewhere's servers may process and store information in the United States or other countries where our service providers operate. By using Elsewhere, you understand your information may be transferred to and processed in a country different from your own.</p>
+    </section>
+
+    <section id="changes">
+      <h2>Changes to this policy</h2>
+      <p>If we make material changes to this policy, we'll update the effective date above and, where appropriate, notify you in the app. We encourage you to review this page from time to time.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Questions about this policy or your information can be sent to <a href="mailto:tedleezc@gmail.com">tedleezc@gmail.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="note">
+      <p>This page is provided as a plain-language privacy notice for the Elsewhere app and its App Store listing. It is not a substitute for legal advice — if you have specific compliance obligations (for example, under GDPR, CCPA, or laws in a region where your users live), have it reviewed by a lawyer before you rely on it.</p>
+    </div>
+    <p>© 2026 Zhichao Li. Elsewhere is not affiliated with Apple Inc.</p>
+  </footer>
+</div>
+
+</body>
+</html>
