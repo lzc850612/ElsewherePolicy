@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Elsewhere — Make room for better sleep</title>
+<meta name="description" content="Elsewhere quiets the apps that keep you up, at the hour you choose, every evening. An iPhone app built on Apple Screen Time.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Elsewhere — Make room for better sleep">
+<meta property="og:description" content="Elsewhere quiets the apps that keep you up, at the hour you choose, every evening.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  /* Elsewhere commits to one world: the app runs in permanent dusk
+     (preferredColorScheme(.dark)), so the site does too. Tokens are the
+     app's Palette, converted from its sRGB components. */
+  :root {
+    --night: #0b181c;
+    --ground: #101f23;
+    --raised: #17292c;
+    --cream: #f0ebdf;
+    --sage: #b1beb9;
+    --line: #394b4c;
+    --accent: #c8c9a9;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --measure: 34rem;
+    --wide: 60rem;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--night); }
+  body {
+    background: var(--night);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding-inline: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+  .col { max-width: var(--measure); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin: 0 0 1.1rem;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; text-wrap: balance; margin: 0; }
+  h1 {
+    font-size: clamp(2.6rem, 8vw, 4.1rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 4.4vw, 2.3rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  h3 { font-size: 1.22rem; line-height: 1.25; letter-spacing: -0.01em; }
+  p { margin: 0 0 1rem; color: var(--sage); }
+  p.lead { color: var(--cream); font-size: 1.12rem; line-height: 1.55; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    padding-block: clamp(3.5rem, 10vw, 6rem) clamp(3rem, 8vw, 5rem);
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    header.hero { grid-template-columns: 1.05fr 0.95fr; }
+  }
+  .hero-copy { max-width: 32rem; }
+  .hero h1 { margin-bottom: 1.4rem; }
+
+  .horizon {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 5 / 4;
+    display: block;
+  }
+  /* The app breathes on a 9s cycle: SettlingCue.halfCycle (4.5s) doubled. */
+  .orb { animation: breathe 9s ease-in-out infinite; transform-origin: 260px 190px; }
+  .glow { animation: glimmer 9s ease-in-out infinite; transform-origin: 260px 190px; }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.045); }
+  }
+  @keyframes glimmer {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.66; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .orb, .glow { animation: none; }
+    .glow { opacity: 0.5; }
+  }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 1rem 1.3rem; align-items: center; margin-top: 2rem; }
+  .capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 56px;
+    padding: 0 1.7rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--night);
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  .capsule:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .quiet-link { color: var(--sage); text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .quiet-link:hover { color: var(--cream); border-color: var(--sage); }
+
+  /* ---------- sections ---------- */
+  section { padding-block: clamp(3rem, 8vw, 4.75rem); border-top: 1px solid var(--line); }
+
+  .steps { display: grid; gap: 2rem; margin-top: 2.5rem; }
+  @media (min-width: 720px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .step .num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+  .step h3 { margin-bottom: 0.5rem; }
+  .step p { font-size: 0.95rem; margin: 0; }
+
+  /* ---------- screens ---------- */
+  .screens {
+    display: grid;
+    gap: 1.6rem;
+    margin-top: 2.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  figure { margin: 0; }
+  figure img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: var(--ground);
+  }
+  figcaption {
+    font-size: 0.82rem;
+    color: var(--sage);
+    margin-top: 0.85rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- findings ---------- */
+  .findings { display: grid; gap: 0; margin-top: 2.5rem; }
+  .finding { padding-block: 1.6rem; border-top: 1px solid var(--line); }
+  .finding:first-child { border-top: none; padding-top: 0; }
+  .finding h3 { margin-bottom: 0.55rem; }
+  .finding p { font-size: 0.95rem; margin-bottom: 0.7rem; }
+  .cite {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--sage);
+    opacity: 0.8;
+    margin: 0;
+  }
+  .disclaimer {
+    margin-top: 2.25rem;
+    padding: 1.1rem 1.3rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--ground);
+    font-size: 0.88rem;
+    color: var(--sage);
+  }
+
+  /* ---------- privacy ---------- */
+  .facts { list-style: none; padding: 0; margin: 2.25rem 0 0; display: grid; gap: 1.5rem; }
+  @media (min-width: 720px) { .facts { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+  .facts li { color: var(--sage); font-size: 0.95rem; }
+  .facts strong { display: block; color: var(--cream); font-family: var(--serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.4rem; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 3rem 3.5rem;
+    color: var(--sage);
+    font-size: 0.88rem;
+  }
+  .foot-grid { display: flex; flex-wrap: wrap; gap: 1.75rem 3rem; justify-content: space-between; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; }
+  footer a { color: var(--sage); text-decoration: none; border-bottom: 1px solid transparent; }
+  footer a:hover { color: var(--cream); border-color: var(--line); }
+  .mark { display: flex; align-items: center; gap: 0.6rem; font-family: var(--serif); color: var(--cream); font-size: 1.05rem; }
+  .mark svg { width: 26px; height: 16px; flex: none; }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">iPhone &middot; Screen Time</p>
+      <h1>Make room for better sleep.</h1>
+      <p class="lead">Elsewhere quiets the apps that keep you up &mdash; at the hour you choose, every evening, without you having to win the argument with yourself at 11pm.</p>
+      <div class="cta-row">
+        <a class="capsule" href="https://apps.apple.com/app/id6812615299">Download on the App Store <span aria-hidden="true">&#8599;</span></a>
+        <a class="quiet-link" href="#how">See how it works</a>
+      </div>
+    </div>
+
+    <svg class="horizon" viewBox="0 0 520 416" role="img" aria-label="A pale sun resting on a horizon of layered lines">
+      <defs>
+        <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#c8c9a9" stop-opacity="0.55"/>
+          <stop offset="55%" stop-color="#c8c9a9" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#c8c9a9" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#101f23"/>
+          <stop offset="100%" stop-color="#0b181c"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="520" height="416" rx="20" fill="url(#skyGrad)"/>
+      <circle class="glow" cx="260" cy="190" r="150" fill="url(#glowGrad)"/>
+      <circle class="orb" cx="260" cy="190" r="62" fill="#e8e3c4"/>
+      <g stroke="#b1beb9" fill="none" stroke-width="1">
+        <path d="M0 250c70-26 140-26 210 0s170 26 240-6" opacity="0.5"/>
+        <path d="M0 268c70-24 140-24 210 2s170 24 240-8" opacity="0.42"/>
+        <path d="M0 286c70-22 140-22 210 4s170 22 240-10" opacity="0.34"/>
+        <path d="M0 304c70-20 140-20 210 6s170 20 240-12" opacity="0.27"/>
+        <path d="M0 322c70-18 140-18 210 8s170 18 240-14" opacity="0.21"/>
+        <path d="M0 340c70-16 140-16 210 10s170 16 240-16" opacity="0.16"/>
+        <path d="M0 358c70-14 140-14 210 12s170 14 240-18" opacity="0.12"/>
+        <path d="M0 376c70-12 140-12 210 14s170 12 240-20" opacity="0.09"/>
+      </g>
+    </svg>
+  </header>
+
+  <section id="why">
+    <div class="col">
+      <p class="eyebrow">Why it exists</p>
+      <h2>The hard part isn&rsquo;t wanting to sleep.</h2>
+      <p>It&rsquo;s that the decision to put the phone down has to be made at exactly the moment you are least equipped to make it &mdash; tired, a little wired, three taps into something that refreshes forever.</p>
+      <p>Researchers have a name for this: bedtime procrastination. Not a sleep problem, a self-regulation one. People who go to bed later than they meant to usually know perfectly well what they should do. The gap is in the doing, at the hour when doing is hardest.</p>
+      <p>Elsewhere moves the decision to daylight. You choose what to quiet and when, once, while you&rsquo;re rested and clear-headed. Then every evening it arrives on its own &mdash; no notification to dismiss, no willpower required, no negotiating with yourself in the dark.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="col">
+      <p class="eyebrow">How it works</p>
+      <h2>Set it once. It keeps the hour for you.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Choose what to quiet</h3>
+        <p>Apps, whole categories, or websites. Picked once, on your terms, in Apple&rsquo;s own Screen Time picker.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Set your evening</h3>
+        <p>A wind-down time and a bedtime. Elsewhere schedules the evenings you mark as active and leaves the rest alone.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>It arrives on its own</h3>
+        <p>At the hour you chose, the apps go quiet and a ritual begins. When it ends, everything comes back.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="app">
+    <div class="col">
+      <p class="eyebrow">In the app</p>
+      <h2>A quiet thing, made quietly.</h2>
+      <p>No streak shaming, no leaderboards, no badges for going to bed. An evening, an orb that breathes at the pace of a slow exhale, and a record of the time you kept for yourself.</p>
+    </div>
+    <div class="screens">
+      <figure>
+        <img src="shots/welcome.png" alt="The Elsewhere welcome screen at dusk" width="720" height="1558" loading="lazy">
+        <figcaption>An opening that doesn&rsquo;t ask for an account.</figcaption>
+      </figure>
+      <figure>
+        <img src="shots/evening.png" alt="Setting a wind-down and bedtime" width="720" height="1558" loading="lazy">
+        <figcaption>Your wind-down and bedtime, set once.</figcaption>
+      </figure>
+      <figure>
+        <img src="shots/countdown.png" alt="A ritual in progress, counting down" width="720" height="1558" loading="lazy">
+        <figcaption>The ritual itself &mdash; nothing to do but let it run.</figcaption>
+      </figure>
+      <figure>
+        <img src="shots/moments.png" alt="Weekly minutes and days with a ritual" width="720" height="1558" loading="lazy">
+        <figcaption>Your week, kept privately on your phone.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="science">
+    <div class="col">
+      <p class="eyebrow">What the research says</p>
+      <h2>Why an automatic hour beats good intentions.</h2>
+      <p>Elsewhere isn&rsquo;t built on a hunch about screens. Three findings shape how it works.</p>
+    </div>
+    <div class="findings col">
+      <div class="finding">
+        <h3>Evening screen light shifts your body clock</h3>
+        <p>In a controlled laboratory study, reading on a light-emitting device before bed suppressed melatonin, delayed circadian timing, lengthened the time it took to fall asleep, and left people less alert the next morning &mdash; compared with reading print under dim light.</p>
+        <p class="cite">Chang AM, Aeschbach D, Duffy JF, Czeisler CA. &ldquo;Evening use of light-emitting eReaders negatively affects sleep, next-morning alertness, and next-day circadian timing.&rdquo; PNAS, 2015.</p>
+      </div>
+      <div class="finding">
+        <h3>Going to bed late is a self-regulation problem</h3>
+        <p>Bedtime procrastination &mdash; going to bed later than intended without any external reason to &mdash; is linked to general difficulty with self-regulation rather than to not valuing sleep. Which is why advice to simply decide better tends not to work, and why removing the decision does.</p>
+        <p class="cite">Kroese FM, De Ridder DTD, Evers C, Adriaanse MA. &ldquo;Bedtime procrastination: introducing a new area of procrastination.&rdquo; Frontiers in Psychology, 2014.</p>
+      </div>
+      <div class="finding">
+        <h3>Regular timing matters, not just hours slept</h3>
+        <p>Irregular sleep and wake times are associated with delayed circadian timing and worse outcomes, even in people getting a similar total amount of sleep. A wind-down that happens at the same hour is doing more work than it looks like it is.</p>
+        <p class="cite">Phillips AJK, Clerx WM, O&rsquo;Brien CS, et al. &ldquo;Irregular sleep/wake patterns are associated with poorer academic performance and delayed circadian and sleep/wake timing.&rdquo; Scientific Reports, 2017.</p>
+      </div>
+    </div>
+    <p class="disclaimer col">Elsewhere is not a medical device and doesn&rsquo;t diagnose or treat sleep disorders. It quiets apps at an hour you choose. If you&rsquo;re dealing with persistent sleep trouble, that&rsquo;s a conversation for a doctor.</p>
+  </section>
+
+  <section id="privacy">
+    <div class="col">
+      <p class="eyebrow">Privacy</p>
+      <h2>We can&rsquo;t see what you chose to quiet.</h2>
+      <p>That&rsquo;s not a policy promise &mdash; it&rsquo;s how Apple&rsquo;s Screen Time framework is built. When you pick apps to shield, Elsewhere receives an encrypted, opaque token, never the list itself.</p>
+    </div>
+    <ul class="facts">
+      <li><strong>No analytics SDKs</strong>Nothing third-party watches how you use the app. No ads, ever.</li>
+      <li><strong>No account required</strong>Elsewhere works signed out. Signing in with Apple is optional, and only syncs your ritual history.</li>
+      <li><strong>Apple handles payment</strong>Membership goes through the App Store. We never see a card number.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="mark">
+          <svg viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="12" r="8" fill="currentColor" opacity="0.9"/>
+            <path d="M0 22c6-4 12-4 18 0s16 4 26 0" stroke="currentColor" stroke-width="1" opacity="0.5" fill="none"/>
+          </svg>
+          Elsewhere
+        </div>
+        <p style="margin-top:0.75rem">An evening, kept for you.<br>&copy; 2026 Zhichao Li</p>
+      </div>
+      <div class="foot-links">
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+        <a href="mailto:tedleezc@gmail.com">Support &mdash; tedleezc@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body></html>
