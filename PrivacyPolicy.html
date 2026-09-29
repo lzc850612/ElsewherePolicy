@@ -44,9 +44,12 @@
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
   .wrap { max-width: var(--wide); margin: 0 auto; }
-  /* Rules and section dividers span the wrap; words stay in the column. */
-  header.top > *, nav.toc, section > h2, section > h3, section > p,
+  /* Like the landing page: structural blocks take the full container and
+     running text stays in the reading column. */
+  section > h2, section > h3, section > p,
   section > ul, section > ol, section > .card, footer > * { max-width: var(--measure); }
+  /* The hero copy is held to the same 32rem the landing page uses. */
+  header.top .eyebrow, header.top h1 { max-width: 32rem; }
 
   header.top { padding-block: clamp(3.5rem, 10vw, 6rem) clamp(3rem, 8vw, 5rem); }
   .brand {
@@ -74,12 +77,18 @@
   }
 
   .meta {
-    display: flex; flex-wrap: wrap; gap: 0.4rem 1.75rem;
-    margin-top: 1.75rem;
-    font-size: 0.85rem;
+    display: grid; gap: 1.25rem 2rem;
+    grid-template-columns: 1fr;
+    margin-top: 2.25rem;
+    font-size: 0.9rem;
     color: var(--sage);
   }
-  .meta strong { font-weight: 400; color: var(--cream); }
+  @media (min-width: 720px) { .meta { grid-template-columns: repeat(3, 1fr); } }
+  .meta span { display: block; }
+  .meta strong {
+    display: block; font-weight: 400; color: var(--cream);
+    font-family: var(--serif); font-size: 1.1rem; margin-top: 0.3rem;
+  }
 
   nav.toc {
     border: 1px solid var(--line);
@@ -90,7 +99,8 @@
   }
   nav.toc p.eyebrow { margin-bottom: 0.9rem; }
   nav.toc ol { margin: 0; padding-left: 1.15rem; }
-  nav.toc li { margin: 0 0 0.4rem; color: var(--sage); font-size: 0.93rem; }
+  @media (min-width: 720px) { nav.toc ol { columns: 3; column-gap: 2.5rem; } }
+  nav.toc li { margin: 0 0 0.4rem; color: var(--sage); font-size: 0.93rem; break-inside: avoid; }
   nav.toc li:last-child { margin-bottom: 0; }
   nav.toc a { color: var(--sage); text-decoration: none; border-bottom: 1px solid transparent; }
   nav.toc a:hover { color: var(--cream); border-color: var(--line); }
