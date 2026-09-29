@@ -97,16 +97,22 @@
     aspect-ratio: 5 / 4;
     display: block;
   }
-  /* The app breathes on a 9s cycle: SettlingCue.halfCycle (4.5s) doubled. */
-  .orb { animation: breathe 9s ease-in-out infinite; transform-origin: 260px 190px; }
-  .glow { animation: glimmer 9s ease-in-out infinite; transform-origin: 260px 190px; }
+  /* The same breath the app draws: a 9s cycle (SettlingCue.halfCycle 4.5s
+     doubled), the orb swelling to 1.2 while the glow rises 0.35 to 0.65,
+     both eased in and out around the half way point. */
+  .orb {
+    animation: breathe 9s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .glow { animation: glimmer 9s ease-in-out infinite; }
   @keyframes breathe {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.045); }
+    50% { transform: scale(1.2); }
   }
   @keyframes glimmer {
     0%, 100% { opacity: 0.35; }
-    50% { opacity: 0.66; }
+    50% { opacity: 0.65; }
   }
   @media (prefers-reduced-motion: reduce) {
     .orb, .glow { animation: none; }
